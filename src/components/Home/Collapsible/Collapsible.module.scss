@@ -1,0 +1,44 @@
+@import 'variables';
+
+.collapsible {
+  .header {
+    display: flex;
+
+    .btn_expand {
+      width: fit-content;
+      background-color: $primary;
+      width: 35px;
+      height: 43px;
+      color: #fff;
+      outline: none;
+      border: 0;
+      transition: $transition;
+
+      &.active {
+        background-color: $secondary;
+      }
+    }
+
+    .title {
+      padding: 8px;
+      border: 1px solid $primary;
+      color: $primary;
+      transition: $transition;
+      font-size: 16px;
+      width: 100%;
+
+      &.active {
+        background-color: #111;
+        color: #fff;
+        border: 1px solid #111;
+      }
+    }
+  }
+
+  .content {
+    background-color: #e6e6e6;
+    padding-block: 16px;
+    padding-inline-start: 40px;
+    padding-inline-end: 16px;
+  }
+}

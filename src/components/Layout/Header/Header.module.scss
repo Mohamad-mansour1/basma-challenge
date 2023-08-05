@@ -1,0 +1,17 @@
+.header {
+  .top_header {
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+
+    .login {
+      position: absolute;
+      inset-block-start: 40px;
+      inset-inline-end: 60px;
+
+      @media only screen and (max-width: 992px) {
+        display: none;
+      }
+    }
+  }
+}
