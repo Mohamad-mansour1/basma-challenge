@@ -1,6 +1,22 @@
-import { useState } from 'react'
+import React, { ReactNode, createContext, useState } from 'react'
 
-export const useAuth = () => {
+interface AuthContextProps {
+  isAuthenticated: boolean
+  token: string
+  login: (newToken: string) => void
+  logout: () => void
+}
+
+export const AuthContext = createContext<AuthContextProps>({
+  isAuthenticated: false,
+  token: '',
+  login: () => {},
+  logout: () => {},
+})
+
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     const storedAuthStatus = localStorage.getItem('isAuthenticated')
     return storedAuthStatus === 'true'
@@ -25,10 +41,9 @@ export const useAuth = () => {
     localStorage.removeItem('token')
   }
 
-  return {
-    isAuthenticated,
-    token,
-    login,
-    logout,
-  }
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, token, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }

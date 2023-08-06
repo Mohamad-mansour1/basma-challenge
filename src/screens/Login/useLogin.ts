@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import makeRequest from 'utils/makeRequest'
 import { AUTH_ENDPOINTS } from 'config/apiEndpoints'
-import { useAuth } from 'hooks/useAuth'
+import { AuthContext } from 'context/AuthContext'
 
 export interface LoginProps {}
 
@@ -11,7 +11,7 @@ export const useLogin = (props: LoginProps) => {
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const { isAuthenticated, login } = useAuth()
+  const { isAuthenticated, login } = useContext(AuthContext)
 
   const onSubmit = async (email: string, password: string) => {
     setIsLoading(true)

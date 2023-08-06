@@ -22,7 +22,7 @@
       "img/*": ["img/*"],
       "config/*": ["config/*"],
       "utils/*": ["utils/*"],
-      "hooks/*": ["hooks/*"]
+      "context/*": ["context/*"]
     }
   },
   "include": ["src"]

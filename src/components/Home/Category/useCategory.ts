@@ -1,6 +1,7 @@
-import { useAuth } from 'hooks/useAuth'
+import { useContext } from 'react'
 import makeRequest from 'utils/makeRequest'
 import { ACTIONS_ENDPOINTS } from 'config/apiEndpoints'
+import { AuthContext } from 'context/AuthContext'
 
 export interface CategoryProps {
   img: string
@@ -11,7 +12,7 @@ export interface CategoryProps {
 }
 
 export const useCategory = (props: CategoryProps) => {
-  const { token } = useAuth()
+  const { token } = useContext(AuthContext)
 
   const handleClick = async (type: string) => {
     if (token) {

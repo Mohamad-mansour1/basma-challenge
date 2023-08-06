@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { useAuth } from 'hooks/useAuth'
+import { useState, useContext } from 'react'
 import makeRequest from 'utils/makeRequest'
 import { ACTIONS_ENDPOINTS, AUTH_ENDPOINTS } from 'config/apiEndpoints'
+import { AuthContext } from 'context/AuthContext'
 
 export interface HeaderProps {}
 
 export const useHeader = (props: HeaderProps) => {
-  const { isAuthenticated, token, logout } = useAuth()
+  const { isAuthenticated, token, logout } = useContext(AuthContext)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleLogout = async () => {
